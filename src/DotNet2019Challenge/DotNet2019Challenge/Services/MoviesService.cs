@@ -27,56 +27,48 @@ namespace DotNet2019Challenge.Services.Movies
             _serializerSettings.Converters.Add(new StringEnumConverter());
         }
 
-        public static MoviesService Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new MoviesService();
-                return _instance;
-            }
-        }
+        public static MoviesService Instance => _instance ?? (_instance = new MoviesService());
 
         public async Task<SearchResponse<Movie>> GetPopularMoviesAsync(int pageNumber = 1, string language = "en")
         {
-            string uri = $"{AppSettings.ApiUrl}movie/popular?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
+            var uri = $"{AppSettings.ApiUrl}movie/popular?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
 
-            HttpClient httpClient = CreateHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            var httpClient = CreateHttpClient();
+            var response = await httpClient.GetAsync(uri);
 
             await HandleResponse(response);
 
-            string serialized = await response.Content.ReadAsStringAsync();
-            SearchResponse<Movie> result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<Movie>>(serialized, _serializerSettings));
+            var serialized = await response.Content.ReadAsStringAsync();
+            var result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<Movie>>(serialized, _serializerSettings));
 
             return result;
         }
 
         public async Task<SearchResponse<Movie>> GetTopRatedMoviesAsync(int pageNumber = 1, string language = "en")
         {
-            string uri = $"{AppSettings.ApiUrl}movie/top_rated?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
+            var uri = $"{AppSettings.ApiUrl}movie/top_rated?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
 
             HttpClient httpClient = CreateHttpClient();
             HttpResponseMessage response = await httpClient.GetAsync(uri);
 
             await HandleResponse(response);
 
-            string serialized = await response.Content.ReadAsStringAsync();
-            SearchResponse<Movie> result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<Movie>>(serialized, _serializerSettings));
+            var serialized = await response.Content.ReadAsStringAsync();
+            var result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<Movie>>(serialized, _serializerSettings));
 
             return result;
         }
 
         public async Task<SearchResponse<TVShow>> GetPopularShowsAsync(int pageNumber = 1, string language = "en")
         {
-            string uri = $"{AppSettings.ApiUrl}tv/popular?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
+            var uri = $"{AppSettings.ApiUrl}tv/popular?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
 
-            HttpClient httpClient = CreateHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            var httpClient = CreateHttpClient();
+            var response = await httpClient.GetAsync(uri);
 
             await HandleResponse(response);
 
-            string serialized = await response.Content.ReadAsStringAsync();
+            var serialized = await response.Content.ReadAsStringAsync();
             SearchResponse<TVShow> result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<TVShow>>(serialized, _serializerSettings));
 
             return result;
@@ -84,20 +76,20 @@ namespace DotNet2019Challenge.Services.Movies
 
         public async Task<SearchResponse<TVShow>> GetTopRatedShowsAsync(int pageNumber = 1, string language = "en")
         {
-            string uri = $"{AppSettings.ApiUrl}tv/top_rated?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
+            var uri = $"{AppSettings.ApiUrl}tv/top_rated?api_key={AppSettings.ApiKey}&language={language}&page={pageNumber}";
 
-            HttpClient httpClient = CreateHttpClient();
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            var httpClient = CreateHttpClient();
+            var response = await httpClient.GetAsync(uri);
 
             await HandleResponse(response);
 
-            string serialized = await response.Content.ReadAsStringAsync();
-            SearchResponse<TVShow> result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<TVShow>>(serialized, _serializerSettings));
+            var serialized = await response.Content.ReadAsStringAsync();
+            var result = await Task.Run(() => JsonConvert.DeserializeObject<SearchResponse<TVShow>>(serialized, _serializerSettings));
 
             return result;
         }
 
-        private HttpClient CreateHttpClient()
+        private static HttpClient CreateHttpClient()
         {
             var httpClient = new HttpClient();
 
@@ -106,7 +98,7 @@ namespace DotNet2019Challenge.Services.Movies
             return httpClient;
         }
 
-        private async Task HandleResponse(HttpResponseMessage response)
+        private static async Task HandleResponse(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
             {

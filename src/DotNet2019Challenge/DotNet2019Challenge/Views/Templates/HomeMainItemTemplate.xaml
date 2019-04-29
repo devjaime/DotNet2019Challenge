@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DotNet2019Challenge.Views.Templates.HomeMainItemTemplate">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="DotNet2019Challenge.Views.Templates.HomeMainItemTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Resources>
         <ResourceDictionary>
 
@@ -39,25 +40,23 @@
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Image 
-				Grid.Row="0"
-				Aspect="AspectFill"
-				Source="{Binding Highlight.BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}" 
-				Style="{StaticResource HighlightImageStyle}"/>
-            <Image 
-				Grid.Row="0" 
-				Style="{StaticResource HighlightGradientImageStyle}">
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                Source="{Binding Highlight.BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}"
+                Style="{StaticResource HighlightImageStyle}" />
+            <Image Grid.Row="0" Style="{StaticResource HighlightGradientImageStyle}">
                 <Image.Source>
                     <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="Android, iOS" Value="movies_opacity"/>
-                        <On Platform="UWP" Value="Assets/movies-opacity.png"/>
+                        <On Platform="Android, iOS" Value="movies_opacity" />
+                        <On Platform="UWP" Value="Assets/movies-opacity.png" />
                     </OnPlatform>
                 </Image.Source>
             </Image>
             <Grid
-				Grid.Row="0"
-                RowSpacing="12"
+                Grid.Row="0"
                 Margin="24"
+                RowSpacing="12"
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -68,30 +67,30 @@
                     <ColumnDefinition Width="40*" />
                 </Grid.ColumnDefinitions>
                 <Grid
-					Grid.Column="0"
-					Grid.Row="0"
-					VerticalOptions="Start">
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Start">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label 
-						Grid.Row="0"
-						Text="{Binding Highlight.OriginalTitle}"
-						Style="{StaticResource HighlightTitleStyle}" />
+                    <Label
+                        Grid.Row="0"
+                        Style="{StaticResource HighlightTitleStyle}"
+                        Text="{Binding Highlight.OriginalTitle}" />
                 </Grid>
                 <Button
-					Grid.Column="0"
-					Grid.Row="1"
-					WidthRequest="180"
-					VerticalOptions="End"
-					HorizontalOptions="Start"
-					Style="{StaticResource PlayButtonStyle}"
-					Text="PLAY TRAILER">
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource PlayButtonStyle}"
+                    Text="PLAY TRAILER"
+                    VerticalOptions="End"
+                    WidthRequest="180">
                     <Button.Image>
                         <OnPlatform x:TypeArguments="FileImageSource">
-                            <On Platform="Android, iOS" Value="movies_play"/>
-                            <On Platform="UWP" Value="Assets/movies-play.png"/>
+                            <On Platform="Android, iOS" Value="movies_play" />
+                            <On Platform="UWP" Value="Assets/movies-play.png" />
                         </OnPlatform>
                     </Button.Image>
                 </Button>

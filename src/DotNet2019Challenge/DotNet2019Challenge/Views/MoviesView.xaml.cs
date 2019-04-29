@@ -5,7 +5,7 @@ namespace DotNet2019Challenge.Views
 {
     public partial class MoviesView : ContentPage
 	{
-        MoviesViewModel _vm;
+        readonly MoviesViewModel _vm;
 
         public MoviesView ()
 		{

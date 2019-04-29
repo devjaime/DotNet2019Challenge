@@ -18,7 +18,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public bool IsBusy
         {
-            get { return _isBusy; }
+            get => _isBusy;
             set
             {
                 _isBusy = value;
@@ -28,7 +28,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public Movie Highlight
         {
-            get { return _highlight; }
+            get => _highlight;
             set
             {
                 _highlight = value;
@@ -38,7 +38,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public ObservableCollection<Movie> TopRatedMovies
         {
-            get { return _topRatedMovies; }
+            get => _topRatedMovies;
             set
             {
                 _topRatedMovies = value;
@@ -48,7 +48,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public ObservableCollection<Movie> PopularMovies
         {
-            get { return _popularMovies; }
+            get => _popularMovies;
             set
             {
                 _popularMovies = value;
@@ -58,7 +58,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public ObservableCollection<TVShow> TopRatedTvShows
         {
-            get { return _topRatedTvShows; }
+            get => _topRatedTvShows;
             set
             {
                 _topRatedTvShows = value;
@@ -68,7 +68,7 @@ namespace DotNet2019Challenge.ViewModels
 
         public ObservableCollection<TVShow> PopularTvShows
         {
-            get { return _popularTvShows; }
+            get => _popularTvShows;
             set
             {
                 _popularTvShows = value;

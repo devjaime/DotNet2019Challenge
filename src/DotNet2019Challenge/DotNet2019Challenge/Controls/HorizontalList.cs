@@ -32,26 +32,26 @@ namespace DotNet2019Challenge.Controls
 
         public ICommand SelectedCommand
         {
-            get { return (ICommand)GetValue(SelectedCommandProperty); }
-            set { SetValue(SelectedCommandProperty, value); }
+            get => (ICommand)GetValue(SelectedCommandProperty);
+            set => SetValue(SelectedCommandProperty, value);
         }
 
         public IEnumerable ItemsSource
         {
-            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
+            get => (IEnumerable)GetValue(ItemsSourceProperty);
+            set => SetValue(ItemsSourceProperty, value);
         }
 
         public object SelectedItem
         {
-            get { return (object)GetValue(SelectedItemProperty); }
-            set { SetValue(SelectedItemProperty, value); }
+            get => (object)GetValue(SelectedItemProperty);
+            set => SetValue(SelectedItemProperty, value);
         }
 
         public DataTemplate ItemTemplate
         {
-            get { return (DataTemplate)GetValue(ItemTemplateProperty); }
-            set { SetValue(ItemTemplateProperty, value); }
+            get => (DataTemplate)GetValue(ItemTemplateProperty);
+            set => SetValue(ItemTemplateProperty, value);
         }
 
         private static void ItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
@@ -130,13 +130,11 @@ namespace DotNet2019Challenge.Controls
             return view;
         }
 
-        private void AddGesture(View view, TapGestureRecognizer gesture)
+        private static void AddGesture(View view, IGestureRecognizer gesture)
         {
             view.GestureRecognizers.Add(gesture);
 
-            var layout = view as Layout<View>;
-
-            if (layout == null)
+            if (!(view is Layout<View> layout))
             {
                 return;
             }
